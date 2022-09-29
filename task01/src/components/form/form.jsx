@@ -37,20 +37,10 @@ export class Form extends React.Component {
 
   render() {
     return (
-      <form className={styles.form} onSubmit={this.onSubmit} ref={this.formRef}>
-        <div className={styles.title}>Создание анкеты</div>
-        <SingleLineInput
-          label="Имя*"
-          type="text"
-          name="name"
-          placeholder="Имя"
-        />
-        <SingleLineInput
-          label="Фамилия*"
-          type="text"
-          name="surname"
-          placeholder="Фамилия"
-        />
+      <form className={styles.form} onSubmit={this.onSubmit} onReset={this.cancelHandler} ref={this.formRef}>
+        <h1 className={styles.title}>Создание анкеты</h1>
+        <SingleLineInput label="Имя*" type="text" name="name" placeholder="Имя" />
+        <SingleLineInput label="Фамилия*" type="text" name="surname" placeholder="Фамилия" />
         <SingleLineInput label="Дата рождения*" type="date" name="birthday" />
         <SingleLineInput
           label="Телефон*"
@@ -66,12 +56,7 @@ export class Form extends React.Component {
           placeholder="https://example.com"
           pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?"
         />
-        <MultiLineInput
-          label="О себе*"
-          type="text"
-          name="about"
-          placeholder="Расскажите немного о себе"
-        />
+        <MultiLineInput label="О себе*" type="text" name="about" placeholder="Расскажите немного о себе" />
         <MultiLineInput
           label="Стек технологий*"
           type="text"
@@ -85,11 +70,7 @@ export class Form extends React.Component {
           placeholder="Опишите ваш последний проект"
         />
         <div className={styles.controls}>
-          <button
-            type="button"
-            className={`${styles.button} ${styles.cancel}`}
-            onClick={this.cancelHandler}
-          >
+          <button type="reset" className={`${styles.button} ${styles.cancel}`}>
             Отмена
           </button>
           <button type="submit" className={`${styles.button} ${styles.submit}`}>
