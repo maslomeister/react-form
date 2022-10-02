@@ -30,3 +30,16 @@
   line-height: 14px;
   pointer-events: none;
 }
+
+.counter {
+  color: #65657b;
+  font-family: sans-serif;
+  font-size: 14px;
+  height: 16px;
+  padding-left: 8px;
+  pointer-events: none;
+}
+
+.error {
+  color: #ef5656;
+}
