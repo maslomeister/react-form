@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 
 import { MultiLineInput } from "../multi-line-input/multi-line-input";
 import { SingleLineInput } from "../single-line-input/single-line-input";
@@ -16,7 +16,9 @@ export const Form = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    setInputValues((prevValue) => {
+      return { ...prevValue, [name]: value };
+    });
   };
 
   const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -111,6 +113,18 @@ export const Form = () => {
       });
     }
   };
+
+  useEffect(() => {
+    validateMultiLine("about");
+  }, [inputValues.about]);
+
+  useEffect(() => {
+    validateMultiLine("stack");
+  }, [inputValues.stack]);
+
+  useEffect(() => {
+    validateMultiLine("description");
+  }, [inputValues.description]);
 
   const formHasErrors = useMemo(() => {
     if (JSON.stringify(errorValues) !== JSON.stringify(emptyFields)) {
@@ -214,11 +228,7 @@ export const Form = () => {
         name="about"
         placeholder="Расскажите немного о себе"
         value={inputValues.about}
-        onChange={(e) => {
-          handleInputChange(e);
-          validateMultiLine("about");
-        }}
-        onBlur={() => validateMultiLine("about")}
+        onChange={handleInputChange}
         error={errorValues.about}
       />
       <MultiLineInput
@@ -227,11 +237,7 @@ export const Form = () => {
         name="stack"
         placeholder="Перечислите технологии которые вы использовали"
         value={inputValues.stack}
-        onChange={(e) => {
-          handleInputChange(e);
-          validateMultiLine("stack");
-        }}
-        onBlur={() => validateMultiLine("stack")}
+        onChange={handleInputChange}
         error={errorValues.stack}
       />
       <MultiLineInput
@@ -240,11 +246,7 @@ export const Form = () => {
         name="description"
         placeholder="Опишите ваш последний проект"
         value={inputValues.description}
-        onChange={(e) => {
-          handleInputChange(e);
-          validateMultiLine("description");
-        }}
-        onBlur={() => validateMultiLine("description")}
+        onChange={handleInputChange}
         error={errorValues.description}
       />
       <div className={styles.controls}>
