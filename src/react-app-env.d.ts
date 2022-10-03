@@ -15,7 +15,7 @@ interface customFormElements extends HTMLFormElement {
   readonly elements: FormElements;
 }
 
-interface Fields {
+interface FormFields {
   name: string;
   surname: string;
   birthday: string;

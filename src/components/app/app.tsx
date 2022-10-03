@@ -6,10 +6,10 @@ import { Profile } from "../profile/profile";
 import styles from "./app.module.css";
 
 export const App = () => {
-  const [formResult, setFormResult] = useState({} as Fields);
+  const [formResult, setFormResult] = useState({} as FormFields);
   const [profileCreated, setProfileCreated] = useState(false);
 
-  const formResultHandler = (fields: Fields) => {
+  const formResultHandler = (fields: FormFields) => {
     setProfileCreated(true);
     setFormResult(fields);
   };

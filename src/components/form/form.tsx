@@ -7,14 +7,14 @@ import { phoneNumberFormat } from "../../utils/validation";
 import styles from "./form.module.css";
 
 interface Props {
-  setFormResult: (fields: Fields) => void;
+  setFormResult: (fields: FormFields) => void;
 }
 
 const emptyFields = { name: "", surname: "", birthday: "", phoneNumber: "", url: "", about: "", stack: "", description: "" };
 
 export const Form = ({ setFormResult }: Props) => {
-  const [inputValues, setInputValues] = useState<Fields>({ ...emptyFields });
-  const [errorValues, setErrorValues] = useState<Fields>({ ...emptyFields });
+  const [inputValues, setInputValues] = useState<FormFields>({ ...emptyFields });
+  const [errorValues, setErrorValues] = useState<FormFields>({ ...emptyFields });
 
   const formRef = useRef<null | HTMLFormElement>(null);
 
@@ -199,12 +199,12 @@ export const Form = ({ setFormResult }: Props) => {
       const formData = {
         name: event.currentTarget.elements.name.value.trim(),
         surname: event.currentTarget.elements.surname.value.trim(),
-        birthday: event.currentTarget.birthday.value.trim(),
-        phoneNumber: event.currentTarget.phone_number.value.trim(),
-        url: event.currentTarget.url.value.trim(),
-        about: event.currentTarget.about.value.trim(),
-        stack: event.currentTarget.stack.value.trim(),
-        description: event.currentTarget.description.value.trim(),
+        birthday: event.currentTarget.elements.birthday.value.trim(),
+        phoneNumber: event.currentTarget.elements.phoneNumber.value.trim(),
+        url: event.currentTarget.elements.url.value.trim(),
+        about: event.currentTarget.elements.about.value.trim(),
+        stack: event.currentTarget.elements.stack.value.trim(),
+        description: event.currentTarget.elements.description.value.trim(),
       };
 
       setFormResult(formData);
