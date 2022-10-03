@@ -25,12 +25,14 @@ export const Form = () => {
   };
 
   const validateName = () => {
-    if (inputValues.name.length === 0) {
+    const name = inputValues.name.trim();
+
+    if (name.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, name: "Поле пустое. Заполните пожалуйста" };
       });
       return false;
-    } else if (inputValues.name[0].toLowerCase() === inputValues.name[0]) {
+    } else if (name[0].toLowerCase() === name[0]) {
       setErrorValues((prevValue) => {
         return { ...prevValue, name: "Имя должно начинаться с большой буквы" };
       });
@@ -44,12 +46,14 @@ export const Form = () => {
   };
 
   const validateSurname = () => {
-    if (inputValues.surname.length === 0) {
+    const surname = inputValues.surname.trim();
+
+    if (surname.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, surname: "Поле пустое. Заполните пожалуйста" };
       });
       return false;
-    } else if (inputValues.surname[0].toLowerCase() === inputValues.surname[0]) {
+    } else if (surname[0].toLowerCase() === surname[0]) {
       setErrorValues((prevValue) => {
         return { ...prevValue, surname: "Имя должно начинаться с большой буквы" };
       });
@@ -63,7 +67,9 @@ export const Form = () => {
   };
 
   const validateBirthday = () => {
-    if (inputValues.birthday.length === 0) {
+    const birthday = inputValues.birthday;
+
+    if (birthday.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, birthday: "Поле пустое. Заполните пожалуйста" };
       });
@@ -77,12 +83,14 @@ export const Form = () => {
   };
 
   const validatePhoneNumber = () => {
-    if (inputValues.phoneNumber.length === 0) {
+    const phoneNumber = inputValues.phoneNumber;
+
+    if (phoneNumber.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, phoneNumber: "Поле пустое. Заполните пожалуйста" };
       });
       return false;
-    } else if (inputValues.phoneNumber.length < 11) {
+    } else if (phoneNumber.length < 11) {
       setErrorValues((prevValue) => {
         return { ...prevValue, phoneNumber: "Неверный номер" };
       });
@@ -96,12 +104,14 @@ export const Form = () => {
   };
 
   const validateUrl = () => {
-    if (inputValues.url.length === 0) {
+    const url = inputValues.url.trim();
+
+    if (url.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, url: "Поле пустое. Заполните пожалуйста" };
       });
       return false;
-    } else if (!inputValues.url.startsWith("https://")) {
+    } else if (!url.startsWith("https://")) {
       setErrorValues((prevValue) => {
         return { ...prevValue, url: "Сайт должен начинаться с https://" };
       });
@@ -115,12 +125,13 @@ export const Form = () => {
   };
 
   const validateMultiLine = (name: "about" | "stack" | "description") => {
-    if (inputValues[name].length === 0) {
+    const multiLine = inputValues[name].trim();
+    if (multiLine.length === 0) {
       setErrorValues((prevValue) => {
         return { ...prevValue, [name]: "Поле пустое. Заполните пожалуйста" };
       });
       return false;
-    } else if (inputValues[name].length > 600) {
+    } else if (multiLine.length > 600) {
       setErrorValues((prevValue) => {
         return { ...prevValue, [name]: "Превышен лимит символов" };
       });
