@@ -6,9 +6,13 @@ import { phoneNumberFormat } from "../../utils/validation";
 
 import styles from "./form.module.css";
 
+interface Props {
+  setFormResult: (fields: Fields) => void;
+}
+
 const emptyFields = { name: "", surname: "", birthday: "", phoneNumber: "", url: "", about: "", stack: "", description: "" };
 
-export const Form = () => {
+export const Form = ({ setFormResult }: Props) => {
   const [inputValues, setInputValues] = useState<Fields>({ ...emptyFields });
   const [errorValues, setErrorValues] = useState<Fields>({ ...emptyFields });
 
@@ -196,14 +200,14 @@ export const Form = () => {
         name: event.currentTarget.elements.name.value.trim(),
         surname: event.currentTarget.elements.surname.value.trim(),
         birthday: event.currentTarget.birthday.value.trim(),
-        phone_number: event.currentTarget.phone_number.value.trim(),
+        phoneNumber: event.currentTarget.phone_number.value.trim(),
         url: event.currentTarget.url.value.trim(),
         about: event.currentTarget.about.value.trim(),
         stack: event.currentTarget.stack.value.trim(),
         description: event.currentTarget.description.value.trim(),
       };
 
-      alert(JSON.stringify(formData, null, 2));
+      setFormResult(formData);
     }
   };
 
@@ -247,7 +251,7 @@ export const Form = () => {
       <SingleLineInput
         label="Телефон*"
         type="tel"
-        name="phone_number"
+        name="phoneNumber"
         placeholder="1-1111-11-11"
         maxLength={11}
         value={inputValues.phoneNumber}
@@ -266,7 +270,7 @@ export const Form = () => {
         error={errorValues.url}
       />
       <MultiLineInput
-        label="О себе"
+        label="О себе*"
         type="text"
         name="about"
         placeholder="Расскажите немного о себе"
@@ -275,7 +279,7 @@ export const Form = () => {
         error={errorValues.about}
       />
       <MultiLineInput
-        label="Стек технологий"
+        label="Стек технологий*"
         type="text"
         name="stack"
         placeholder="Перечислите технологии которые вы использовали"
@@ -284,7 +288,7 @@ export const Form = () => {
         error={errorValues.stack}
       />
       <MultiLineInput
-        label="Описание последнего проекта"
+        label="Описание последнего проекта*"
         type="text"
         name="description"
         placeholder="Опишите ваш последний проект"
