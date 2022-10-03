@@ -4,7 +4,7 @@ interface FormElements extends HTMLFormControlsCollection {
   name: HTMLInputElement;
   surname: HTMLInputElement;
   birthday: HTMLInputElement;
-  phone_number: HTMLInputElement;
+  phoneNumber: HTMLInputElement;
   url: HTMLInputElement;
   about: HTMLTextAreaElement;
   stack: HTMLTextAreaElement;
