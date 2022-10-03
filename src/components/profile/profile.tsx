@@ -5,7 +5,7 @@ import { Field } from "./components/field/field";
 import styles from "./profile.module.css";
 
 type Props = {
-  formResult: Fields;
+  formResult: FormFields;
 };
 
 export const Profile = ({ formResult }: Props) => {
