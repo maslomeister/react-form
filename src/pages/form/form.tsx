@@ -1,7 +1,11 @@
 import React, { useRef, useState, useMemo, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { MultiLineInput } from "../multi-line-input/multi-line-input";
-import { SingleLineInput } from "../single-line-input/single-line-input";
+import { MultiLineInput } from "../../components/multi-line-input/multi-line-input";
+import { SingleLineInput } from "../../components/single-line-input/single-line-input";
+import { Button } from "../../components/button/button";
+import { TitleWithNavigation } from "../../components/title-with-navigation/title-with-navigation";
+
 import { phoneNumberFormat } from "../../utils/validation";
 
 import styles from "./form.module.css";
@@ -10,9 +14,21 @@ interface Props {
   setFormResult: (fields: FormFields) => void;
 }
 
-const emptyFields = { name: "", surname: "", birthday: "", phoneNumber: "", url: "", about: "", stack: "", description: "" };
+const emptyFields = {
+  name: "",
+  surname: "",
+  birthday: "",
+  phoneNumber: "",
+  url: "",
+  about: "",
+  stack: "",
+  description: "",
+  formComplete: false,
+};
 
 export const Form = ({ setFormResult }: Props) => {
+  const navigate = useNavigate();
+
   const [inputValues, setInputValues] = useState<FormFields>({ ...emptyFields });
   const [errorValues, setErrorValues] = useState<FormFields>({ ...emptyFields });
 
@@ -205,9 +221,13 @@ export const Form = ({ setFormResult }: Props) => {
         about: event.currentTarget.elements.about.value.trim(),
         stack: event.currentTarget.elements.stack.value.trim(),
         description: event.currentTarget.elements.description.value.trim(),
+        formComplete: true,
       };
 
       setFormResult(formData);
+      navigate(`/profile`, {
+        replace: true,
+      });
     }
   };
 
@@ -218,7 +238,7 @@ export const Form = ({ setFormResult }: Props) => {
 
   return (
     <form className={styles.form} onSubmit={handleFormSubmit} onReset={handleFormReset} ref={formRef} noValidate>
-      <h1 className={styles.title}>Создание анкеты</h1>
+      <TitleWithNavigation leftButton="back" title="Создание анкеты" />
       <SingleLineInput
         label="Имя*"
         type="text"
@@ -297,12 +317,12 @@ export const Form = ({ setFormResult }: Props) => {
         error={errorValues.description}
       />
       <div className={styles.controls}>
-        <button type="reset" className={`${styles.button} ${styles.cancel}`}>
-          Отмена
-        </button>
-        <button type="submit" className={`${styles.button} ${styles.submit}`}>
-          Отправить
-        </button>
+        <Button type="reset" variant="outline">
+          Отчистить
+        </Button>
+        <Button type="submit" variant="fill">
+          Сохранить
+        </Button>
       </div>
       <label className={styles.error}>{formErrors}</label>
     </form>
