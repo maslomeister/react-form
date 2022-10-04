@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Form } from "../../pages/form/form";
@@ -13,6 +13,13 @@ export const App = () => {
   const formResultHandler = (fields: FormFields) => {
     setFormResult(fields);
   };
+
+  useEffect(() => {
+    const savedFormResult = JSON.parse(localStorage.getItem("formResult") || "{}") as FormFields;
+    if (savedFormResult.formComplete) {
+      setFormResult(savedFormResult);
+    }
+  }, []);
 
   return (
     <div className={styles.app}>

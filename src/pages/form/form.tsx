@@ -225,6 +225,7 @@ export const Form = ({ setFormResult }: Props) => {
       };
 
       setFormResult(formData);
+      localStorage.setItem("formResult", JSON.stringify(formData));
       navigate(`/profile`, {
         replace: true,
       });
