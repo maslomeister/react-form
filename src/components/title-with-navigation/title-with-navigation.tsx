@@ -14,7 +14,7 @@ export const TitleWithNavigation = ({ leftButton, title }: Props) => {
   const leftItem = useMemo(() => {
     switch (leftButton) {
       case "back":
-        return <BiArrowBack className={styles.back} color="#eee" width={"46px"} onClick={() => navigate(-1)} />;
+        return <BiArrowBack className={styles.back} color="#eee" onClick={() => navigate(-1)} />;
       default:
         return <></>;
     }
