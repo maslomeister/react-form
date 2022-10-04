@@ -27,7 +27,7 @@ export const Profile = ({ formResult }: Props) => {
         </div>
       ) : (
         <div className={styles.form}>
-          <h1 className={styles.title}>Данные не найдены</h1>
+          <TitleWithNavigation leftButton="back" title="Данные не найдены" />
           <Button height={48} width={300} onClick={() => navigate("/form", { replace: true })}>
             Заполнить анкету
           </Button>
