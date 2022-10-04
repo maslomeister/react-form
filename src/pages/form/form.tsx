@@ -274,7 +274,7 @@ export const Form = ({ setFormResult }: Props) => {
         type="tel"
         name="phoneNumber"
         placeholder="1-1111-11-11"
-        maxLength={11}
+        maxLength={12}
         value={inputValues.phoneNumber}
         onChange={handlePhoneChange}
         onBlur={validatePhoneNumber}
