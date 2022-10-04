@@ -9,6 +9,7 @@ interface FormElements extends HTMLFormControlsCollection {
   about: HTMLTextAreaElement;
   stack: HTMLTextAreaElement;
   description: HTMLTextAreaElement;
+  formComplete: boolean;
 }
 
 interface customFormElements extends HTMLFormElement {
@@ -24,7 +25,8 @@ interface FormFields {
   about: string;
   stack: string;
   description: string;
-  [key: string]: string;
+  formComplete: boolean;
+  [key: string]: string | boolean;
 }
 
 declare module "*.css" {
