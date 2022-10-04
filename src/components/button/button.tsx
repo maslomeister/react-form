@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 
 import styles from "./button.module.css";
-
-type Props = {
+interface Props {
   children: string;
   type?: "button" | "submit" | "reset";
   className?: string;
@@ -10,7 +9,7 @@ type Props = {
   height?: number;
   width?: number;
   onClick?: () => void;
-};
+}
 
 export const Button = ({ children, type = "button", className, variant = "fill", height, width, onClick }: Props) => {
   const buttonVariant = useMemo(() => {

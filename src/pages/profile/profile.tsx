@@ -7,9 +7,9 @@ import { Button } from "../../components/button/button";
 
 import styles from "./profile.module.css";
 
-type Props = {
+interface Props {
   formResult: FormFields;
-};
+}
 
 export const Profile = ({ formResult }: Props) => {
   const navigate = useNavigate();

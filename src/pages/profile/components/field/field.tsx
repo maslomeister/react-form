@@ -2,10 +2,10 @@ import React from "react";
 
 import styles from "./field.module.css";
 
-type Props = {
+interface Props {
   label: string;
   value: string;
-};
+}
 
 export const Field = ({ label, value }: Props) => {
   return (
