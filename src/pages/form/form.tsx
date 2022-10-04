@@ -39,6 +39,13 @@ export const Form = ({ setFormResult }: Props) => {
     setInputValues({ ...inputValues, [name]: value });
   };
 
+  const handleUrlFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    if (value === "" || value === undefined) {
+      setInputValues({ ...inputValues, url: "https://" });
+    }
+  };
+
   const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setInputValues({ ...inputValues, phoneNumber: phoneNumberFormat(value) });
@@ -287,6 +294,7 @@ export const Form = ({ setFormResult }: Props) => {
         placeholder="https://example.com"
         value={inputValues.url}
         onChange={handleInputChange}
+        onFocus={handleUrlFocus}
         onBlur={validateUrl}
         error={errorValues.url}
       />
