@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import styles from "./multi-line-input.module.css";
 
@@ -13,13 +13,12 @@ interface Props {
 }
 
 export const MultiLineInput = ({ placeholder, name, label, value, onChange, error }: Props) => {
+  const errorText = useMemo(() => (error ? value.length + "/600 " + error : value.length + "/600"), [value, error]);
   return (
     <div className={styles["input-container"]}>
       <label className={styles.label}>{label}</label>
       <textarea className={styles.input} placeholder={placeholder} cols={7} name={name} value={value} onChange={onChange} />
-      <label className={`${styles.counter} ${error ? styles.error : ""}`}>
-        {error ? value.length + "/600 " + error : value.length + "/600"}
-      </label>
+      <label className={`${styles.counter} ${error ? styles.error : ""}`}>{errorText}</label>
     </div>
   );
 };

@@ -11,7 +11,6 @@
   background-color: #303245;
   border-radius: 12px;
   border: 0;
-  box-sizing: border-box;
   color: #eee;
   font-family: sans-serif;
   font-size: 18px;
@@ -25,7 +24,6 @@
 
 .label {
   color: #65657b;
-  font-family: sans-serif;
   padding-left: 8px;
   line-height: 14px;
   pointer-events: none;
@@ -33,7 +31,6 @@
 
 .counter {
   color: #65657b;
-  font-family: sans-serif;
   font-size: 14px;
   height: 16px;
   padding-left: 8px;

@@ -9,12 +9,13 @@ interface Props {
   label: string;
   maxLength?: number;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   error: string;
 }
 
-export const SingleLineInput = ({ type, placeholder, name, value, label, maxLength, onChange, onBlur, error }: Props) => {
+export const SingleLineInput = ({ type, placeholder, name, value, label, maxLength, onChange, onBlur, onFocus, error }: Props) => {
   return (
     <div className={styles["input-container"]}>
       <label className={styles.label}>{label}</label>
@@ -25,6 +26,7 @@ export const SingleLineInput = ({ type, placeholder, name, value, label, maxLeng
         onChange={onChange}
         value={value}
         onBlur={onBlur}
+        onFocus={onFocus}
         name={name}
         maxLength={maxLength}
       />
