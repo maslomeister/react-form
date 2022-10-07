@@ -1,6 +1,11 @@
 ### Description
 
-Small survey like website where you can complete form with your data and then it will be stored in localStore of the browser
+Small survey-website where you can fill out the form with your data and then it will be stored in localStore of the browser
+
+It has three pages:
+- Home - you can go to the form and fill it out or you can view allready filled form
+- Form - you can fill out the form, go back, clear all field of the form or save the form
+- Profile - you can view saved form
 
 ### Features
 
