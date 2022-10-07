@@ -1,0 +1,17 @@
+.field {
+  width: 100%;
+}
+
+.label {
+  color: #65657b;
+  font-family: sans-serif;
+  padding-left: 8px;
+  line-height: 20px;
+  pointer-events: none;
+}
+
+.content {
+  color: #eee;
+  padding-left: 8px;
+  font-size: 16px;
+}
