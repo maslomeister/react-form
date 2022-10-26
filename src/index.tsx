@@ -9,7 +9,7 @@ import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="react-intensive">
+    <BrowserRouter basename="react-form">
       <App />
     </BrowserRouter>
   </React.StrictMode>
